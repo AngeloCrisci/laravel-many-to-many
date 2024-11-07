@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId("project_id")->constrained();
             $table->foreignId("technology_id")->constrained();
 
-            $table->primary("project_id" , "technology_id");
+            $table->primary(["project_id" , "technology_id"]);
 
         });
     }
