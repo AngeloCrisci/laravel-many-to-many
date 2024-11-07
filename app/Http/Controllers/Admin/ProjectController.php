@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use App\Models\Project;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -29,14 +30,21 @@ class ProjectController extends Controller
 
         $project = Project::create($formData);
 
+        if (isset($formData["technologies"])){
+            $project->technologies()->sync($formData["technologies"]);
+        } else {
+            $project->technologies()->detach();
+        }
+
         return redirect()->route("admin.index");
     }
 
     public function create(){
         $project = new Project();
-        $types = Type::create();
+        $types = Type::all();
+        $technologies = Technology::all();
 
-        return view("admin.create" , compact("types" , "project"));
+        return view("admin.create" , compact("types" , "project" , "technologies"));
     }
 
 }

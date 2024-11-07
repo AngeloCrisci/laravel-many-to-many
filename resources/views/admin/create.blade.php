@@ -19,6 +19,29 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="project-type_id" class="form-label">Tipo:</label>
+                <input type="text" class="form-control" id="project-type_id" name="type_id" value="{{ old('$project->type->name')}}">
+                @error('type_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="mb-3 ">
+                <label for="project-technologies" class="form-label">Tecnologie:</label>
+                @foreach ( $technologies as $technology )
+                <div class="form-check">
+                    <input type="checkbox" name="technologies[]" id="project-technologies" class="form-check-input" value="{{ $technology->id }}"
+                        @if( $project->technologies->contains($technology)) checked @endif>
+                    <label type="checkbox" name="technologies[]" id="project-technologies" class="form-check-label">
+                        {{ $technology->name  }}
+                    </label>
+                </div>
+                @endforeach
+                @error("technology_id")
+                    <div class="alert alert-warning">
+                        {{ $message }}
+                    </div>
+                @enderror
+            <div class="mb-3">
                 <label for="project-description" class="form-label">Descrizione:</label>
                 <input type="text" class="form-control" id="project-description" name="description" value="{{ old('description') }}" >
                 @error('description')

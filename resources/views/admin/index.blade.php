@@ -15,6 +15,12 @@
             <div class="card-body">
                 <h1 class="card-text">Titolo:  {{$project->id}} . {{ $project->name }}</h1>
                 <h2 class="card-text">Tipo: {{ $project->type->name }}</h2>
+                @forelse ($project->technologies as $technology )
+                    <p class="card-text">Tecnologie: {{$technology->name}}</p>
+                @empty
+                    <p class="card-text"> Non ci sono Tecnologie</p>
+                @endforelse
+
                 <p class="card-text">Data: {{ $project->date }}</p>
                 <p class="card-text">Descrizione: {{ $project->description }}</p>
                 <a class="card-text" href="{{ $project->link }}"> Link </a>
@@ -25,7 +31,7 @@
                     Vai al Progetto
                 </a>
                 <a class="btn btn-secondary mb-2" href="">
-                                Edita Il progetto
+                    Edita Il progetto
                 </a>
                 <form action=" }}"
                 method="post">
