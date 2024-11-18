@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get("/projects" , [ProjectController::class , "index"] )->name("api.projects.index");
 Route::get("/technology" , [TechnologyController::class, "index"])->name("api.technology.index");
+Route::get("/type" , [TechnologyController::class, "index"])->name("api.type.index");
