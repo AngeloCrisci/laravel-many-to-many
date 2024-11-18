@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\ProjectController;
 use App\Http\Controllers\Api\TechnologyController;
+use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get("/projects" , [ProjectController::class , "index"] )->name("api.projects.index");
 Route::get("/technology" , [TechnologyController::class, "index"])->name("api.technology.index");
-Route::get("/type" , [TechnologyController::class, "index"])->name("api.type.index");
+Route::get("/type" , [TypeController::class, "index"])->name("api.type.index");
